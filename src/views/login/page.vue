@@ -52,14 +52,25 @@ const showErrorAlert = () => {
         技艺精湛巧，事半功倍然。
       </div>
     </div>
+
+
+
+<!--    下面是登录from-->
+
     <div class="flex-1">
       <div class="flex flex-col items-center justify-center h-screen p-16">
-        <div class="font-bold text-3xl mb-4">Login</div>
+        <div class="font-bold text-3xl mb-4">欢迎回家</div>
         <Input placeholder="Username"  class="mb-4"></Input>
         <Input placeholder="Password"  class="mb-4"></Input>
         <Button class="w-full text-xl" @click="Login">Login</Button>
       </div>
     </div>
+
+    <!--    下面是登录from 结束-->
+
+
+
+<!--    登录alert-->
 
     <Alert class="h-1/12 w-5/12 absolute left-1/3 top-1/4 border border-green-300" v-if="isAlertVisible"  type="success"  :duration="1000">
       <AlertTitle class="text-green-400">Success</AlertTitle>
@@ -69,11 +80,15 @@ const showErrorAlert = () => {
     </Alert>
 
     <Alert class="h-1/12 w-5/12 absolute left-1/3 top-1/4 border border-red-300" v-if="isAlertVisibleError"  type="error"  :duration="1000">
-      <AlertTitle class="text-red-400">Error</AlertTitle>
+      <AlertCircle class="w-4 h-4" />
+      <AlertTitle>Error</AlertTitle>
       <AlertDescription>
         登录失败错误信息: xxxxx
       </AlertDescription>
     </Alert>
+
+    <!--    登录alert end-->
+
   </div>
 </template>
 

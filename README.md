@@ -20,3 +20,6 @@ npx shadcn-vue@latest add xxxxx
 
 ### 项目规范 新建一个view
 - 名称/page.vue 为入口
+
+### imgs
+![login.png](README/login.png)
