@@ -8,7 +8,8 @@
 ```
 - vue3
 - typescript
-- shadcn ui
+- shadcn
+- naive-ui
 - tailwind 
 - apexcharts
 - axios

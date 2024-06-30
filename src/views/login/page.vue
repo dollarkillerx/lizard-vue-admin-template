@@ -1,37 +1,21 @@
 <script setup lang="ts">
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
-import {ref} from "vue";
 import {JWT} from "@/utils/jwt";
 import router from "@/router";
+import { useMessage } from 'naive-ui'
+const message = useMessage()
 
 const Login = () => {
   // 正常情况 发生网络请求然后 跳转页面
   console.log('login')
-  showSuccessAlert()
-  // showErrorAlert()
+
+  message.info("登录成功")
+  // message.error("登录失败")
 
   JWT.setToken('123456')
   router.push("/dashboard")
 }
-
-const isAlertVisible = ref(false);
-const isAlertVisibleError = ref(false);
-
-const showSuccessAlert = () => {
-  isAlertVisible.value = true;
-  setTimeout(() => {
-    isAlertVisible.value = false;
-  }, 2000);
-};
-
-const showErrorAlert = () => {
-  isAlertVisibleError.value = true;
-  setTimeout(() => {
-    isAlertVisibleError.value = false;
-  }, 2000);
-};
 </script>
 
 <template>
@@ -67,28 +51,6 @@ const showErrorAlert = () => {
     </div>
 
     <!--    下面是登录from 结束-->
-
-
-
-<!--    登录alert-->
-
-    <Alert class="h-1/12 w-5/12 absolute left-1/3 top-1/4 border border-green-300" v-if="isAlertVisible"  type="success"  :duration="1000">
-      <AlertTitle class="text-green-400">Success</AlertTitle>
-      <AlertDescription>
-        登录成功
-      </AlertDescription>
-    </Alert>
-
-    <Alert class="h-1/12 w-5/12 absolute left-1/3 top-1/4 border border-red-300" v-if="isAlertVisibleError"  type="error"  :duration="1000">
-      <AlertCircle class="w-4 h-4" />
-      <AlertTitle>Error</AlertTitle>
-      <AlertDescription>
-        登录失败错误信息: xxxxx
-      </AlertDescription>
-    </Alert>
-
-    <!--    登录alert end-->
-
   </div>
 </template>
 
