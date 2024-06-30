@@ -7,7 +7,29 @@ const router = createRouter({
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: () => import('../views/dashboard/page.vue')
+      component: () => import('../views/dashboard/page.vue'),
+      children: [
+        {
+          path: 'dashboard',
+          name: 'dashboard',
+          component: () => import('../views/cards/page.vue')
+        },
+        {
+          path: 'from',
+          name: 'from',
+          component: () => import('../views/from/page.vue')
+        },
+        {
+          path: 'from2',
+          name: 'from2',
+          component: () => import('../views/from2/page.vue')
+        },
+        {
+          path: 'toast',
+          name: 'Toast',
+          component: () => import('../views/toast/page.vue')
+        }
+      ]
     },
     {
       path: '/login',

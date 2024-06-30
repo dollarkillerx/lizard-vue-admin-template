@@ -2,7 +2,8 @@
 import type {MenuInterface} from './index'
 import type {DropdownItem} from  '@/components/dropdown/index'
 import Dropdown from '../dropdown/Dropdown.vue'
-import {ref, reactive} from "vue";
+import {ref} from "vue";
+import router from "@/router";
 
 const Menus: MenuInterface[] = [
   {
@@ -10,11 +11,27 @@ const Menus: MenuInterface[] = [
     children: [
       {
         title: "默认统计",
-        path: "/"
+        path: "/dashboard/dashboard"
       },
       {
         title: "From表单",
-        path: "/from"
+        path: "/dashboard/from"
+      },
+      {
+        title: "From表单2",
+        path: "/dashboard/from2"
+      },
+      {
+        title: "Toast",
+        path: "/dashboard/toast"
+      },
+      {
+        title: "Sonner",
+        path: "/dashboard/toast"
+      },
+      {
+        title: "Sheet",
+        path: "/dashboard/toast"
       }
     ]
   }, {
@@ -22,22 +39,28 @@ const Menus: MenuInterface[] = [
     children: [
       {
         title: "Toast",
-        path: "/toast"
+        path: "/dashboard/toast"
       },
       {
         title: "Sonner",
-        path: "/sonner"
+        path: "/dashboard/toast"
       },
       {
         title: "Sheet",
-        path: "/sheet"
+        path: "/dashboard/toast"
       }
     ]
   }
 ];
 
+const action = ref(Menus[0].children!);
+
 const handleSelect = (key: string) => {
-  console.log(key)
+  Menus.forEach((item) => {
+    if (item.title == key) {
+      action.value = item.children!;
+    }
+  });
 }
 
 const MenusToOptions = (): DropdownItem[] => {
@@ -56,12 +79,20 @@ const MenusToOptions = (): DropdownItem[] => {
   });
   return resp;
 }
+
 </script>
 
 <template>
-  <div class="h-full w-full bg-blue-300">
-    <div>
+  <div class="h-full w-full ">
+    <div class="p-2 border-b" style="height: 55px">
     <Dropdown :items="MenusToOptions()" :func="handleSelect"></Dropdown>
+    </div>
+    <div class="p-2">
+      <div v-for="item in action" :id="item.title" class="p-2 bg-white mb-1 rounded hover:bg-gray-200 text-2xl">
+        <RouterLink :to="item.path!">
+          {{item.title}}
+        </RouterLink>
+      </div>
     </div>
   </div>
 </template>

@@ -10,6 +10,7 @@ import VueApexCharts from "vue3-apexcharts";
 const app = createApp(App)
 
 import './index.css'
+import './assets/font.css'
 
 app.use(createPinia())
 app.use(router)

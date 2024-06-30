@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "DingTalk JinBuTi";
+    src: url('DingTalk JinBuTi.ttf');
+}
+
+body {
+    font-family: "DingTalk JinBuTi", serif;
+}
